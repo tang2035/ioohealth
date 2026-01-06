@@ -62,31 +62,13 @@
             z-index: 2;
         }
         
-        .logo {
+        .logo-img {
             width: 70px;
             height: 70px;
-            background: linear-gradient(135deg, #192a70 0%, #0e1a4d 100%);
             border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: 900;
-            font-size: 28px;
+            object-fit: contain;
             box-shadow: 0 4px 8px rgba(25, 42, 112, 0.25);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .logo::after {
-            content: '';
-            position: absolute;
-            top: -10px;
-            right: -10px;
-            width: 20px;
-            height: 20px;
-            background: rgba(255, 255, 255, 0.2);
-            border-radius: 50%;
+            border: 1px solid rgba(25, 42, 112, 0.1);
         }
         
         .company-title {
@@ -329,24 +311,14 @@
             color: #192a70;
         }
         
-        .qrcode-placeholder {
+        .qrcode-img {
             width: 200px;
             height: 200px;
             margin: 20px auto;
-            background: linear-gradient(135deg, #f0f3ff 0%, #e6e9ff 100%);
             border-radius: 10px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            color: #192a70;
-            font-weight: 600;
-            border: 2px dashed #c2c8ff;
-        }
-        
-        .qrcode-placeholder i {
-            font-size: 60px;
-            margin-bottom: 15px;
+            border: 1px solid #eee;
+            display: block;
+            object-fit: cover;
         }
         
         .modal-title {
@@ -378,10 +350,9 @@
                 letter-spacing: 2px;
             }
             
-            .logo {
+            .logo-img {
                 width: 60px;
                 height: 60px;
-                font-size: 24px;
             }
             
             .main-content {
@@ -411,14 +382,18 @@
                 letter-spacing: 1px;
             }
             
-            .logo {
+            .logo-img {
                 width: 50px;
                 height: 50px;
-                font-size: 20px;
             }
             
             .intro-text {
                 font-size: 16px;
+            }
+            
+            .qrcode-img {
+                width: 180px;
+                height: 180px;
             }
         }
     </style>
@@ -427,7 +402,11 @@
     <!-- 顶部区域：Logo和公司名称 -->
     <header class="header">
         <div class="logo-container">
-            <div class="logo">加一</div>
+            <!-- 使用真实Logo图片 -->
+            <img src="https://raw.githubusercontent.com/tang2035/ioohealth/refs/heads/main/logo.png" 
+                 alt="加一健康Logo" 
+                 class="logo-img"
+                 onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNzAiIGhlaWdodD0iNzAiIHZpZXdCb3g9IjAgMCA3MCA3MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iNzAiIGhlaWdodD0iNzAiIHJ4PSIxMiIgZmlsbD0idXJsKCNwYWludDBfbGluZWFyKSIvPjx0ZXh0IHg9IjM1IiB5PSIzOCIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjI0IiBmb250LXdlaWdodD0iYm9sZCIgZmlsbD0id2hpdGUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGR5PSIuM2VtIj7nr4c8L3RleHQ+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJwYWludDBfbGluZWFyIiB4MT0iMCIgeTE9IjAiIHgyPSI3MCIgeTI9IjcwIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHN0b3Agc3RvcC1jb2xvcj0iIzE5MmE3MCIvPjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iIzBlMWE0ZCIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPjwvc3ZnPg=='">
             <div class="company-title">
                 <h1 class="company-name">加一健康</h1>
                 <div class="company-subtitle">J I A Y I &nbsp; H E A L T H</div>
@@ -496,10 +475,11 @@
             <div class="modal-close" id="close-modal">&times;</div>
             <h3 class="modal-title">扫码关注"精彩加一"</h3>
             <p class="modal-subtitle">关注公众号获取最新健康资讯</p>
-            <div class="qrcode-placeholder">
-                <i class="fab fa-weixin"></i>
-                <span>微信公众号二维码</span>
-            </div>
+            <!-- 使用真实二维码图片 -->
+            <img src="https://raw.githubusercontent.com/tang2035/ioohealth/4e90745e8fedca00b47b350ae886619d0a2e4fd0/jingcaijiayi.jpg" 
+                 alt="精彩加一公众号二维码" 
+                 class="qrcode-img"
+                 onerror="this.onerror=null; this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgdmlld0JveD0iMCAwIDIwMCAyMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHJlY3Qgd2lkdGg9IjIwMCIgaGVpZ2h0PSIyMDAiIHJ4PSIxMCIgZmlsbD0iI2YwZjNmZiIvPjx0ZXh0IHg9IjEwMCIgeT0iOTAiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxNCIgZmlsbD0iIzE5MmE3MCIgdGV4dC1hbmNob3I9Im1pZGRsZSI+5b6I5aW955qE5Lq65LiK57uE5Lq6PC90ZXh0Pjx0ZXh0IHg9IjEwMCIgeT0iMTEwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTQiIGZpbGw9IiMxOTJhNzAiIHRleHQtYW5jaG9yPSJtaWRkbGUiPuWQiOi3r+e7hOS6ujwvdGV4dD48cGF0aCBkPSJNNjAgODBMNjAgMTIwIiBzdHJva2U9IiMxOTJhNzAiIHN0cm9rZS13aWR0aD0iMiIvPjxwYXRoIGQ9Ik04MCA4MEgxMjBWMTIwSDgwWiIgc3Ryb2tlPSIjMTkyYTcwIiBzdHJva2Utd2lkdGg9IjIiIGZpbGw9Im5vbmUiLz48L3N2Zz4='">
             <p style="color: #777; font-size: 14px; margin-top: 15px;">使用微信扫一扫关注我们</p>
         </div>
     </div>
@@ -537,6 +517,22 @@
             setTimeout(function() {
                 document.body.style.opacity = '1';
             }, 100);
+        });
+        
+        // 图片加载失败处理
+        window.addEventListener('load', function() {
+            const logoImg = document.querySelector('.logo-img');
+            const qrcodeImg = document.querySelector('.qrcode-img');
+            
+            // 检查Logo图片是否加载成功
+            if (logoImg.naturalWidth === 0) {
+                console.log('Logo图片加载失败，使用备用方案');
+            }
+            
+            // 检查二维码图片是否加载成功
+            if (qrcodeImg.naturalWidth === 0) {
+                console.log('二维码图片加载失败，使用备用方案');
+            }
         });
     </script>
 </body>
